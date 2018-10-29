@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/enemy_1.gd" type="Script" id=1]
+[ext_resource path="res://sprites/ship-1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/rect817.png" type="Texture" id=3]
+[ext_resource path="res://sprites/rect815.png" type="Texture" id=4]
+
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 21.3805
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "exp"
+length = 0.8
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("explotion:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("explotion:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="enemy_1" type="Area2D" groups=[
+"enemy",
+]]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 50, 43 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bullet_pos" type="Position2D" parent="."]
+position = Vector2( 0, -32 )
+
+[node name="condencer" type="Node" parent="bullet_pos"]
+
+[node name="bullet_timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.3
+one_shot = true
+autostart = false
+
+[node name="life_c" type="Node2D" parent="."]
+
+[node name="life" type="TextureProgress" parent="life_c"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_top = -1.0
+margin_right = 60.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+texture_under = ExtResource( 3 )
+texture_over = null
+texture_progress = ExtResource( 4 )
+tint_under = Color( 1, 1, 1, 1 )
+tint_over = Color( 1, 1, 1, 1 )
+tint_progress = Color( 1, 1, 1, 1 )
+radial_initial_angle = 174.4
+radial_fill_degrees = 174.4
+radial_center_offset = Vector2( 0.03, -0.11 )
+nine_patch_stretch = true
+_sections_unfolded = [ "Anchor", "Rect", "Textures", "texture_under" ]
+
+[node name="explotion" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("..")
+autoplay = "New Anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/exp = SubResource( 2 )
+blend_times = [  ]
+
+[connection signal="area_entered" from="." to="." method="_on_rocket3_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_rocket3_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_rocket3_body_exited"]
