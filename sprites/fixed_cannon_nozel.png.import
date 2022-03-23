@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/fixed_cannon_nozel.png-fd987e33f4754998a7842d76df06146a.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

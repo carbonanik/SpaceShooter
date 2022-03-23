@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/PlayerShip2.gd" type="Script" id=1]
+[ext_resource path="res://Ship/Ship_2_body.png" type="Texture" id=2]
+[ext_resource path="res://Ship/ship_2_wing.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 21.304
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.2892, 9.90701 )
+
+[node name="Player" type="RigidBody2D"]
+position = Vector2( 440.191, 345.323 )
+mass = 0.5
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Ship_2_body" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="ship_2_wing" type="Sprite" parent="Ship_2_body"]
+position = Vector2( 0, -9.00452 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

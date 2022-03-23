@@ -30,7 +30,6 @@ func _ready():
 func _process(delta):
 	randomize()
 	var random_targate = randi() % 5
-	print(random_targate)
 	target = game_main.player_pos
 	
 	desired_velocity = target - position

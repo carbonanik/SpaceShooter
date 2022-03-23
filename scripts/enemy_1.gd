@@ -11,13 +11,8 @@ var max_velocity = 10
 var max_speed = 5
 var max_force = 1
 #arrival
-var distance
-var slowingRadius = 400
-var stopRadius = 200
-
 
 var tar = Vector2()
-
 
 func _ready():
 	#velocity = (target - global_position).normalized() * max_velocity

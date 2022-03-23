@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Player/direction_indicatior.png" type="Texture" id=1]
+
+[node name="DirectionIndicator" type="Position2D"]
+
+[node name="DirectionIndicatorSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -40 )
+rotation = -1.5708
+texture = ExtResource( 1 )

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://WorldElement/tileset_1.res" type="TileSet" id=1]
+[ext_resource path="res://Player/player.tscn" type="PackedScene" id=2]
+
+
+[node name="Level2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="." groups=[
+"wall",
+]]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 100, 100 )
+format = 1
+tile_data = PoolIntArray( -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 4, 0, -65531, 4, 0, -65530, 4, 0, -65529, 4, 0, 65535, 4, 0, 1, 4, 0, 7, 4, 0, 8, 4, 0, 131071, 4, 0, 65544, 7, 0, 196607, 7, 0, 131075, 4, 0, 131076, 4, 0, 131082, 4, 0, 131083, 4, 0, 131084, 4, 0, 196619, 4, 0, 196620, 4, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262151, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 7, 0, 393221, 4, 0, 393222, 4, 0, 393223, 4, 0, 393227, 4, 0, 393228, 4, 0, 393229, 4, 0, 458757, 4, 0, 458758, 2, 0, 458762, 4, 0, 458763, 4, 0, 524293, 7, 0, 524297, 4, 0, 524298, 4, 0, 589831, 7, 0, 589833, 4, 0 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 53.1565, 57.0579 )
+rotation = 1.57079

@@ -1,41 +1,41 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/bullet_red.gd" type="Script" id=1]
-[ext_resource path="res://sprites/bullet_red.png" type="Texture" id=2]
+[ext_resource path="res://sprites/radial_gradient.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bullet_red.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 3.0686, 9.8945 )
 
 [node name="bullet_red" type="Area2D" groups=[
+"bullet",
 "enemy_bullet",
 ]]
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-_sections_unfolded = [ "Transform", "shape" ]
+
+[node name="radial_gradient" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0.258824, 0.431373 )
+scale = Vector2( 0.278522, 0.278522 )
+texture = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 0.683803, 0.683803 )
 z_index = -1
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Z Index", "texture" ]
+texture = ExtResource( 3 )
 
 [node name="timer" type="Timer" parent="."]
-process_mode = 1
 wait_time = 0.4
 one_shot = true
 autostart = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -3.0
+margin_top = -10.0
+margin_right = 3.0
+margin_bottom = 10.0
+color = Color( 1, 0, 0.258824, 1 )
+[connection signal="body_entered" from="." to="." method="_on_bullet_red_body_entered"]

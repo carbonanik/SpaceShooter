@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/BalooDa-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/PauseMenu.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float blur = 1.0;
+
+void fragment(){
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV, blur);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/blur = 4.0
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="PauseMenuContainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenuContainer"]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMid" type="Control" parent="PauseMenuContainer"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="PauseMenuContainer/ButtonMid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.0
+margin_top = 170.0
+margin_right = 37.0
+margin_bottom = -396.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Resume"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Restart" type="Button" parent="PauseMenuContainer/ButtonMid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = 230.0
+margin_right = 35.0
+margin_bottom = -336.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Restart"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MainMenu" type="Button" parent="PauseMenuContainer/ButtonMid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = 290.0
+margin_right = 46.0
+margin_bottom = -276.0
+hint_tooltip = "Left the game"
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Main Menu"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ButtonRight" type="Control" parent="PauseMenuContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Pause" type="Button" parent="PauseMenuContainer/ButtonRight"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -71.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Pause"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+[connection signal="pressed" from="PauseMenuContainer/ButtonMid/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/ButtonMid/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/ButtonMid/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="PauseMenuContainer/ButtonRight/Pause" to="." method="_on_Pause_pressed"]

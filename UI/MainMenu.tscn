@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://UI/BalooDa-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.568627, 0, 0.129412, 1 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "OBSCURA"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button_mid" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="button_mid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.0
+margin_top = 170.0
+margin_right = 43.0
+margin_bottom = -396.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Play"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Continue" type="Button" parent="button_mid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.0
+margin_top = 230.0
+margin_right = 43.0
+margin_bottom = -336.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Continue"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option" type="Button" parent="button_mid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = 290.0
+margin_right = 41.0
+margin_bottom = -276.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Option"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Exit" type="Button" parent="button_mid"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.0
+margin_top = 350.0
+margin_right = 43.0
+margin_bottom = -216.0
+hint_tooltip = "Left the game"
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0.0823529, 0.00784314, 0.203922, 1 )
+custom_colors/font_color = Color( 1, 1, 0.721569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.670588, 0.407843, 1 )
+text = "Exit"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[connection signal="pressed" from="button_mid/Play" to="." method="_on_play_pressed"]

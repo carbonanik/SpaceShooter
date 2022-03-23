@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pui_fire.wav-66872ae910438a11efd2ae5eff960f20.sample"
+
+[deps]
+
+source_file="res://sound/fx/pui_fire.wav"
+dest_files=[ "res://.import/pui_fire.wav-66872ae910438a11efd2ae5eff960f20.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Game" type="Node"]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Node2D" type="Node2D" parent="."]

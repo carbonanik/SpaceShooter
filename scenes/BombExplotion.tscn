@@ -1,0 +1,267 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://sprites/circle.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0408163, 0.871972, 1 )
+colors = PoolColorArray( 0.179688, 0.171265, 0.171265, 1, 0.145098, 0.133333, 0.133333, 1, 0.145098, 0.133333, 0.133333, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+max_value = 5.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0, 1 ), 0.337374, 0.337374, 0, 0, Vector2( 0.513889, 2.72727 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.86364 ), -2.08116, -2.08116, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 30.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+scale_random = 1.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 240.0
+initial_velocity_random = 0.7
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 15.0
+scale_random = 0.4
+color = Color( 0.992157, 1, 0.913725, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.5
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.0945455, 0.181818, 0.415638, 0.613169, 0.921811 )
+colors = PoolColorArray( 0.976471, 0.878431, 0.705882, 0, 0.97568, 0.84943, 0.605487, 1, 0.972656, 0.754792, 0.26258, 1, 1, 0.45265, 0.155894, 1, 0.831373, 0.219608, 0.219608, 1, 0.301961, 0.192157, 0.192157, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=9]
+max_value = 2.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0, 1 ), 0.337374, 0.337374, 0, 0, Vector2( 0.751497, 1.50909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.309091 ), -2.08116, -2.08116, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 70.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 1.8
+scale_random = 1.0
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.123457, 0.259259, 0.477366, 0.942387 )
+colors = PoolColorArray( 0.97568, 0.84943, 0.605487, 1, 0.972656, 0.754792, 0.26258, 1, 1, 0.45265, 0.155894, 1, 0.831373, 0.219608, 0.219608, 1, 0.134449, 0.134277, 0.15625, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.498864 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=16]
+lifetime_randomness = 0.3
+trail_divisor = 30
+trail_size_modifier = SubResource( 15 )
+trail_color_modifier = SubResource( 13 )
+flag_align_y = true
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 240.0
+initial_velocity_random = 0.4
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 500.0
+tangential_accel_random = 1.0
+scale = 15.0
+scale_random = 0.4
+color = Color( 0.992157, 1, 0.913725, 1 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 12 )
+
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+lifetime_randomness = 0.3
+trail_divisor = 30
+trail_size_modifier = SubResource( 18 )
+trail_color_modifier = SubResource( 17 )
+flag_align_y = true
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 240.0
+initial_velocity_random = 0.4
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 500.0
+tangential_accel_random = 1.0
+scale = 15.0
+scale_random = 0.4
+color = Color( 0.992157, 1, 0.913725, 1 )
+
+[sub_resource type="Animation" id=20]
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fire:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BrockenPiece:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BrockenPieceTrail:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BrockenPieceTrail2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Smoke:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="BombExplotion" type="Node2D"]
+
+[node name="Smoke" type="Particles2D" parent="."]
+modulate = Color( 1.3, 1.3, 1.1, 1 )
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BrockenPiece" type="Particles2D" parent="."]
+emitting = false
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource( 6 )
+
+[node name="Fire" type="Particles2D" parent="."]
+modulate = Color( 1.3, 1.3, 1.1, 1 )
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource( 11 )
+texture = ExtResource( 1 )
+
+[node name="BrockenPieceTrail" type="Particles2D" parent="."]
+amount = 30
+lifetime = 0.5
+explosiveness = 0.2
+randomness = 0.3
+process_material = SubResource( 16 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BrockenPieceTrail2" type="Particles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+speed_scale = 1.5
+explosiveness = 0.2
+randomness = 0.3
+process_material = SubResource( 19 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Explode"
+anims/Explode = SubResource( 20 )

@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://WorldElement/FrozenBomb/FrozenBomb.gd" type="Script" id=1]
+[ext_resource path="res://WorldElement/FrozenBomb/g10336.png" type="Texture" id=2]
+[ext_resource path="res://WorldElement/FrozenBomb/g10327.png" type="Texture" id=3]
+[ext_resource path="res://WorldElement/FrozenBomb/g376.png" type="Texture" id=4]
+[ext_resource path="res://WorldElement/FrozenBomb/g333.png" type="Texture" id=5]
+[ext_resource path="res://WorldElement/FrozenBomb/g367.png" type="Texture" id=6]
+[ext_resource path="res://sprites/path10318.png" type="Texture" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 200.0
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "FrozeCircleGrow"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExplodeWave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0652746, 0.0652747 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplodeWave:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FrozeCircle/CollisionShape2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 300.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ExplodeWave:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.21, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idel"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FrozeCircle/CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplodeWave:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.0652746, 0.0652747 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExplodeWave:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="FrozenBomb" type="Node2D" groups=[
+"frozenbomb",
+]]
+script = ExtResource( 1 )
+
+[node name="FrozeCircle" type="Area2D" parent="." groups=[
+"frozecircle",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrozeCircle"]
+shape = SubResource( 1 )
+
+[node name="SenceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SenceArea"]
+shape = SubResource( 2 )
+
+[node name="body" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+
+[node name="explode_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idel"
+anims/FrozeCircleGrow = SubResource( 4 )
+anims/idel = SubResource( 5 )
+
+[node name="ExplodeWave" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.0652746, 0.0652747 )
+texture = ExtResource( 7 )
+
+[node name="ActiveTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="area_entered" from="FrozeCircle" to="." method="_on_FrozeCircle_area_entered"]
+[connection signal="body_entered" from="FrozeCircle" to="." method="_on_FrozeCircle_body_entered"]
+[connection signal="body_entered" from="SenceArea" to="." method="_on_SenceArea_body_entered"]
+[connection signal="body_exited" from="SenceArea" to="." method="_on_SenceArea_body_exited"]
+[connection signal="timeout" from="explode_timer" to="." method="_on_explode_timer_timeout"]
+[connection signal="timeout" from="ActiveTimer" to="." method="_on_ActiveTimer_timeout"]

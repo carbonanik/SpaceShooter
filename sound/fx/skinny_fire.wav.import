@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/skinny_fire.wav-33efe6aabd45855a4ea0cb71b8753201.sample"
+
+[deps]
+
+source_file="res://sound/fx/skinny_fire.wav"
+dest_files=[ "res://.import/skinny_fire.wav-33efe6aabd45855a4ea0cb71b8753201.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
